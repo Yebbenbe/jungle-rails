@@ -4,10 +4,33 @@
     <h1>Order #<%= @order.id %></h1>
   </header>
 
-  <div class="order-summary jumbotron">
-    <h4>Thank you for your order!</h4>
-  </div>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">image</th>
+      <th scope="col">Description</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Price</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @order.line_items.each do |line_item|%>
+        <%= render 'items', line_item: line_item %>
+      <% end %>
+    </tbody>
 
+</table>
+
+<div class="order-summary jumbotron d-flex flex-column align-items-end">
+  <div>Total: <%= @order.total_cents / 100.00 %></div><br/>
+  <div>Email: <%= @order.email %></div>
+  <div><h4>Thank you for your order!</h4></div>
+  </div>
+  <div class="row justify-content-end">
+    <div class="col-auto">
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
+  </div>
+  </div> 
 
 </section>

@@ -1,0 +1,7 @@
+<tr>
+  <td> <%= image_tag line_item.product.image.tiny.url %> </td>
+  <td> <%=line_item.product.description%> </td>
+  <td> <%= line_item.quantity %> </td>
+  <td> $<%= line_item.item_price_cents / 100 %> </td>
+  <td> $<%= line_item.total_price_cents / 100 %> </td>
+</tr>
